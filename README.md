@@ -6,6 +6,6 @@ Processing chain in ROS-Neuro to determine when the logarithmic bandpower of the
 
 # Authors
 - Federico Pivotto, 2121720, federico.pivotto@studenti.unipd.it
-- Alessandro Bozzon, ID, EMAIL
-- Riccardo Simion, ID, EMAIL
+- Alessandro Bozzon, 2122185, alessandro.bozzon@studenti.unipd.it
+- Riccardo Simion, 2157564, riccardo.simion@studenti.unipd.it
 - Riccardo Zerbinati, 2158676, riccardo.zerbinati@studenti.unipd.it
