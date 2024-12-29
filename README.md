@@ -1,4 +1,4 @@
-# Log Band Power
+# Log-band Power
 Processing chain in ROS-Neuro to determine when the logarithmic bandpower of the EEG signal crosses a given threshold.
 
 # Instructions
