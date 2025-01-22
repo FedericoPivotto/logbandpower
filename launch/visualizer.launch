@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+    
+    <!-- visualization node -->
+ 	<node name="neuroviz" pkg="rosneuro_visualizer" type="neuroviz" /> 
+ 	
+</launch>

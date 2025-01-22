@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!-- recording arguments -->
+	<arg name="autostart" default='true'/>
+	<arg name="filepath" default='/home/user/github/catkin_ws/src/logbandpower/record'/>
+ 	
+	<!-- recording node -->
+ 	<node name="recorder" pkg="rosneuro_recorder" type="recorder" >
+		<param name="~autostart" value="$(arg autostart)"/>
+		<param name="~filepath" value="$(arg filepath)"/>
+	</node>
+
+</launch>

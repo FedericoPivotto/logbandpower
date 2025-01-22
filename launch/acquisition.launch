@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<!-- acquisition arguments -->
+	<arg name="plugin" default='rosneuro::EGDDevice'/>
+	<arg name="devarg" default='/home/user/github/catkin_ws/src/logbandpower/dataset/ah7.20170613.161402.offline.mi.mi_bhbf.gdf'/>
+	<arg name="samplerate" default='512'/>
+	<arg name="framerate" default='16'/>
+   
+	<!-- acquisition node -->
+	<node name="acquisition" pkg="rosneuro_acquisition" type="acquisition" output="screen">
+  	  <param name="~plugin" 	  value="$(arg plugin)"/>
+  	  <param name="~devarg" 	  value="$(arg devarg)"/>
+  	  <param name="~samplerate" value="$(arg samplerate)"/>
+  	  <param name="~framerate"  value="$(arg framerate)"/>
+  	</node>
+
+</launch>
