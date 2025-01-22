@@ -1,46 +1,49 @@
 #!/usr/bin/env python
 import rospy, rosbag
+from rosbag import ROSBagException, ROSBagFormatException
 from rosneuro_msgs.msg import NeuroFrame, NeuroEvent
 
 def eeg_filtered_callback(data: NeuroFrame):
-	# ROS bag
+	# Write bag
 	global bag, eeg_filtered
 	try:
-		# Write bag
 		bag.write(eeg_filtered, data)
-	except:
-		# Close bag
-		bag.close()
+	except ValueError:
+		print('ValueError: argument is invalid')
 
 def eeg_bandpower_callback(data: NeuroFrame):
-	# ROS bag
+	# Write bag
 	global bag, eeg_bandpower
 	try:
-		# Write bag
 		bag.write(eeg_bandpower, data)
-	except:
-		# Close bag
-		bag.close()
+	except ValueError:
+		print('ValueError: argument is invalid')
 
 def events_bus_callback(data: NeuroEvent):
-	# ROS bag
+	# Write bag
 	global bag, events_bus
 	try:
-		# Write bag
 		bag.write(events_bus, data)
-	except:
-		# Close bag
-		bag.close()
+	except ValueError:
+		print('ValueError: argument is invalid')
 
 def main():
 	# Init the node
 	rospy.init_node('record')
-	
-	# ROS bag
-	global bag, eeg_filtered, eeg_bandpower, events_bus
-	bag = rosbag.Bag('../record/result.bag', 'w')
 
-    # Topics to record
+	# Global variables
+	global bag, eeg_filtered, eeg_bandpower, events_bus
+	try:
+		# ROS bag
+		bag = rosbag.Bag('result.bag', 'w')
+	except ValueError:
+		print('ValueError: argument is invalid')
+	except ROSBagException:
+		print('ROSBagException: error occurs opening file')
+	except ROSBagFormatException:
+		print('ROSBagFormatException: bag format is corrupted')
+
+	# Topics to record
 	eeg_filtered = rospy.get_param('eeg_filtered', 'eeg/filtered')
 	eeg_bandpower = rospy.get_param('eeg_bandpower', 'eeg/bandpower')
 	events_bus = rospy.get_param('events_bus', 'events/bus')
@@ -50,8 +53,12 @@ def main():
 	rospy.Subscriber(eeg_bandpower, NeuroFrame, eeg_bandpower_callback)
 	rospy.Subscriber(events_bus, NeuroEvent, events_bus_callback)
 
-	# Spin callbacks
-	rospy.spin()
+	try:
+		# Spin
+		rospy.spin()
+	finally:
+		# Close bag
+		bag.close()
 
 if __name__ == '__main__':
 	main()
