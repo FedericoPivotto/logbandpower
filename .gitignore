@@ -52,6 +52,3 @@ CATKIN_IGNORE
 
 # Dataset
 dataset/
-
-# Record
-record/

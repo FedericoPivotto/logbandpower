@@ -2,7 +2,6 @@
 import rospy
 import numpy as np
 from rosneuro_msgs.msg import NeuroFrame, NeuroEvent
-from std_msgs.msg import Float32MultiArray
 
 def callback(data: NeuroFrame):
 	# Load the global variables

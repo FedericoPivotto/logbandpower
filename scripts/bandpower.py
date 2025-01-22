@@ -2,7 +2,6 @@
 import rospy
 import numpy as np
 from rosneuro_msgs.msg import NeuroFrame, NeuroDataInfo, NeuroDataFloat
-from std_msgs.msg import Float32MultiArray, MultiArrayDimension
 
 def callback(data: NeuroFrame):
 	global new_data, current_frame
