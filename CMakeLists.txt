@@ -175,6 +175,7 @@ add_definitions(${EIGEN3_DEFINITIONS})
 catkin_install_python(PROGRAMS
   scripts/bandpower.py
   scripts/thresholding.py
+  scripts/rosbag.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

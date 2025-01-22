@@ -3,18 +3,21 @@
 <launch>
 
 	<!-- Acquisition launch -->
-    <include file="$(find logbandpower)/launch/acquisition.launch" />
+    <include file="$(find logbandpower)/launch/acquisition.launch"/>
 	
     <!-- Filter chain launch -->
-    <include file="$(find logbandpower)/launch/filter_chain.launch" />
+    <include file="$(find logbandpower)/launch/filter_chain.launch"/>
 
     <!-- Bandpower launch -->
-    <include file="$(find logbandpower)/launch/bandpower.launch" />
+    <include file="$(find logbandpower)/launch/bandpower.launch"/>
 
     <!-- Thresholding launch -->
-    <include file="$(find logbandpower)/launch/thresholding.launch" />
+    <include file="$(find logbandpower)/launch/thresholding.launch"/>
 	
 	<!-- Recording launch -->
-    <include file="$(find logbandpower)/launch/recording.launch" />
+    <include file="$(find logbandpower)/launch/recording.launch"/>
+	
+    <!-- ROS bag launch -->
+    <include file="$(find logbandpower)/launch/rosbag.launch"/>
 	
 </launch>

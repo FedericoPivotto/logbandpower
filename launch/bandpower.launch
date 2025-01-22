@@ -6,8 +6,8 @@
     <arg name="framerate" default="16"/>
 
     <!-- Bandpower node -->
-    <node name="bandpower_node" pkg="logbandpower" type="bandpower.py" output="screen" >
-        <param name="~rate" value="$(arg framerate)" />
+    <node name="bandpower_node" pkg="logbandpower" type="bandpower.py" output="screen">
+        <param name="~rate" value="$(arg framerate)"/>
     </node>
 
 </launch>

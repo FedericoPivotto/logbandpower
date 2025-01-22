@@ -3,7 +3,7 @@
 <launch>
 
 	<!-- Remeap topic /neurodata to /eeg/raw -->
-	<remap from="neurodata" to="eeg/raw" />
+	<remap from="neurodata" to="eeg/raw"/>
 
 	<!-- Acquisition arguments -->
 	<arg name="plugin"      default="rosneuro::EGDDevice"/>

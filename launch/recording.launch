@@ -8,7 +8,7 @@
  	
 	<!-- Recording node -->
  	<node name="recorder" pkg="rosneuro_recorder" type="recorder" >
-		<param name="~autostart"    value="$(arg autostart)"/>
+		<param name="~autostart"	value="$(arg autostart)"/>
 		<param name="~filepath"     value="$(arg filepath)"/>
 	</node>
 
