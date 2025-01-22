@@ -3,7 +3,7 @@
 <launch>
 	
     <!-- Thresholding arguments -->
-	<arg name="threshold" default="-0.3"/>
+	<arg name="threshold" default="-0.2"/>
     <arg name="channel" default="9"/>
 
     <!-- Thresholding node -->
