@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!-- Record arguments -->
+	<arg name="eeg_filtered"    default="eeg/filtered"/>
+	<arg name="eeg_bandpower"   default="eeg/bandpower"/>
+	<arg name="events_bus"      default="events/bus"/>
+	
+    <!-- Record node -->
+    <node name="record_node" pkg="logbandpower" type="record">
+        <param name="~eeg_filtered"     value="$(arg eeg_filtered)"/>
+        <param name="~eeg_bandpower"    value="$(arg eeg_bandpower)"/>
+        <param name="~events_bus"       value="$(arg events_bus)"/>
+    </node>
+
+</launch>

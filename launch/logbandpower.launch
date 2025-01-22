@@ -14,7 +14,7 @@
     <!-- Thresholding launch -->
     <include file="$(find logbandpower)/launch/thresholding.launch"/>
 	
-    <!-- ROS bag launch -->
-    <include file="$(find logbandpower)/launch/rosbag.launch"/>
+    <!-- Record launch -->
+    <include file="$(find logbandpower)/launch/record.launch"/>
 	
 </launch>

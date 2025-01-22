@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-	
-    <!-- ROS bag node -->
-    <node name="rosbag_node" pkg="logbandpower" type="rosbag.py" output="screen"/>
-
-</launch>
