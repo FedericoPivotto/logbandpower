@@ -3,8 +3,8 @@
 <launch>
 
     <!-- Recording arguments -->
-	<arg name="autostart"   default='true'/>
-	<arg name="filepath"    default='$(find logbandpower)/record'/>
+	<arg name="autostart"   default="true"/>
+	<arg name="filepath"    default="$(find logbandpower)/record"/>
  	
 	<!-- Recording node -->
  	<node name="recorder" pkg="rosneuro_recorder" type="recorder" >

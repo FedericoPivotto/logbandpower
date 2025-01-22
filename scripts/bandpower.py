@@ -42,7 +42,6 @@ def buffered_bandpower(data: NeuroFrame):
 	
 	return tuple(avgs)
 
-
 def generate_new_message(data, rate, old_message):
 	# Starting from the old message generate the new one
 	new_msg = Float32MultiArray()
@@ -58,7 +57,6 @@ def generate_new_message(data, rate, old_message):
 	new_msg.data = data
 
 	return new_msg
-
 
 def main():
 	global new_data, current_frame, seq
