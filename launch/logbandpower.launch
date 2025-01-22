@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<!-- Acquisition launch -->
+    <include file="$(find logbandpower)/launch/acquisition.launch" />
+	
+	<!-- Visualization launch -->
+    <include file="$(find logbandpower)/launch/visualization.launch" />
+	
+	<!-- Recording launch -->
+    <include file="$(find logbandpower)/launch/recording.launch" />
+	
+</launch>

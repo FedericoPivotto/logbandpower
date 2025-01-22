@@ -2,12 +2,15 @@
 
 <launch>
 
+	<!-- Remeap topic /neuroframe to /eeg/raw -->
+	<remap from="neurodata" to="eeg/raw" />
+
 	<!-- Acquisition arguments -->
 	<arg name="plugin"      default="rosneuro::EGDDevice"/>
 	<arg name="devarg"      default="$(find logbandpower)/dataset/data.gdf"/>
 	<arg name="samplerate"  default="512"/>
 	<arg name="framerate"   default="16"/>
-   
+
 	<!-- Acquisition node -->
 	<node name="acquisition" pkg="rosneuro_acquisition" type="acquisition" output="screen">
   	  <param name="~plugin"     value="$(arg plugin)"/>
