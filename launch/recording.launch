@@ -4,7 +4,7 @@
 
     <!-- Recording arguments -->
 	<arg name="autostart"   default='true'/>
-	<arg name="filepath"    default='/home/user/github/catkin_ws/src/logbandpower/record'/>
+	<arg name="filepath"    default='$(find logbandpower)/record'/>
  	
 	<!-- Recording node -->
  	<node name="recorder" pkg="rosneuro_recorder" type="recorder" >
