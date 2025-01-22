@@ -3,11 +3,11 @@
 <launch>
 	
     <!-- Bandpower arguments -->
-	<arg name="framerate" default="16"/>
+    <arg name="framerate" default="16"/>
 
-	<!-- Bandpower node -->
+    <!-- Bandpower node -->
     <node name="bandpower_node" pkg="logbandpower" type="bandpower.py" output="screen" >
-		<param name="rate" value="$(arg framerate)" />
+        <param name="~rate" value="$(arg framerate)" />
     </node>
 
 </launch>

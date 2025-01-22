@@ -20,7 +20,6 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 find_package(Eigen3 REQUIRED)
-
 find_package(PkgConfig)
 
 ## System dependencies are found with CMake's conventions
@@ -138,10 +137,6 @@ add_definitions(${EIGEN3_DEFINITIONS})
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/logbandpower.cpp
 # )
-add_library(thresholding_lib
-  include/logbandpower/thresholding.h
-  src/logbandpower/thresholding.cpp
-)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -152,7 +147,6 @@ add_library(thresholding_lib
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/logbandpower_node.cpp)
-add_executable(thresholding_node src/thresholding_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -168,10 +162,6 @@ add_executable(thresholding_node src/thresholding_node.cpp)
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(thresholding_node
-  ${catkin_LIBRARIES}
-  thresholding_lib
-)
 
 #############
 ## Install ##
@@ -184,6 +174,7 @@ target_link_libraries(thresholding_node
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
   scripts/bandpower.py
+  scripts/thresholding.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

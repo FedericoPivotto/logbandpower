@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+	
+    <!-- Thresholding arguments -->
+	<arg name="threshold" default="15"/>
+    <arg name="channel" default="9"/>
+
+    <!-- Thresholding node -->
+    <node name="thresholding_node" pkg="logbandpower" type="thresholding.py" output="screen" >
+        <param name="~threshold" value="$(arg threshold)" />
+	    <param name="~channel" value="$(arg channel)" />
+    </node>
+
+</launch>
