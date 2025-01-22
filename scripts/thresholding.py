@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 import rospy
 import numpy as np
-from rosneuro_msgs.msg import NeuroFrame
+from rosneuro_msgs.msg import NeuroFrame, NeuroEvent
 from std_msgs.msg import Float32MultiArray
 
 def callback(data: NeuroFrame):
 	# Load the global variables
-	global count, threshold, channel_n
+	global threshold, channel_n, pub
 
 	# Focalize on the specific channel 
 	message_length = int(data.eeg.info.nsamples)
@@ -14,20 +14,38 @@ def callback(data: NeuroFrame):
 	
 	# Check for the blink
 	for i in range(channel_data.size):
-		count = count + 1
 		if(channel_data[i] < threshold):
-			print(count, ": Threshold reached!", " [", channel_data[i], "]")
+			description = "Threshold reached on channel {} with value {}".format(channel_n, channel_data[i])
+			print(description)
+			neuro_event = generate_new_message(data, description)
+			pub.publish(neuro_event)
 			break
+
+def generate_new_message(data, description):
+	# Construct NeuroEvent
+	neuro_event = NeuroEvent()
+	neuro_event.header = data.header
+	neuro_event.neuroheader = data.neuroheader
+	neuro_event.version = "1.0"
+	# neuro_event.event
+	# neuro_event.duration
+	# neuro_event.family
+	neuro_event.description = description
+
+	return neuro_event
 
 def main():
 	# Init the node
-	rospy.init_node('thresholding', anonymous=True)
+	rospy.init_node('thresholding')
 	# Setup the parameters
-	global count, threshold, channel_n
-	count  = 0
+	global threshold, channel_n, pub
+	
 	# Here the value 9 is a fallback if the param 'threshold' is not found
-	threshold = rospy.get_param('threshold', -0.2)
+	threshold = rospy.get_param('threshold', -0.4)
 	channel_n = rospy.get_param('channel', 9)
+
+	# Publisher
+	pub = rospy.Publisher('events/bus', NeuroEvent, queue_size=1)
 
 	# Setup the callback
 	rospy.Subscriber('eeg/bandpower', NeuroFrame, callback)
@@ -35,4 +53,4 @@ def main():
 	rospy.spin()
 
 if __name__ == '__main__':
-  main()
+	main()

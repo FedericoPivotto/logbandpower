@@ -42,7 +42,7 @@ def buffered_bandpower(data: NeuroFrame):
 	
 	return tuple(avgs)
 
-def generate_new_message(data, rate, old_message):
+def generate_new_message(data, old_message):
 	# Construct NeuroDataInfo
 	neuro_data_info = NeuroDataInfo()
 	neuro_data_info = old_message.eeg.info
@@ -81,7 +81,7 @@ def main():
 		# Wait until new data arrives
 		if new_data:
 			new_data = buffered_bandpower(current_frame)
-			neuro_frame = generate_new_message(new_data, hz, current_frame)
+			neuro_frame = generate_new_message(new_data, current_frame)
 			pub.publish(neuro_frame)
 			new_data = False
 		rate.sleep()
