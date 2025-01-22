@@ -4,10 +4,6 @@
 
 	<!-- Acquisition launch -->
     <include file="$(find logbandpower)/launch/acquisition.launch" />
-
-	<!-- Visualization launch -->
-    <!-- TODO: to remove -->
-    <include file="$(find logbandpower)/launch/visualization.launch" />
 	
     <!-- Filter chain launch -->
     <include file="$(find logbandpower)/launch/filter_chain.launch" />
