@@ -1,17 +1,20 @@
 ChainCfg:
-    - name: butterworth-lowpass
-      type: rosneuro_filters/ButterworthFilterFloat
-      params: 
-        samplerate: 512
-        type: lowpass
-        order: 2
-        cutoff: 14
-    - name: butterworth-highpass
-      type: rosneuro_filters/ButterworthFilterFloat
-      params: 
-        samplerate: 512
-        type: highpass
-        order: 2
-        cutoff: 6
-    - name: car
-      type: rosneuro_filters/CarFilterFloat
+
+  - name: butterworth-lowpass
+    type: rosneuro_filters/ButterworthFilterFloat
+    params: 
+      samplerate: 512
+      type: lowpass
+      order: 2
+      cutoff: 14
+
+  - name: butterworth-highpass
+    type: rosneuro_filters/ButterworthFilterFloat
+    params: 
+      samplerate: 512
+      type: highpass
+      order: 2
+      cutoff: 6
+      
+  - name: car
+    type: rosneuro_filters/CarFilterFloat
