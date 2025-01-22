@@ -8,7 +8,7 @@
 	<arg name="events_bus"      default="events/bus"/>
 	
     <!-- Record node -->
-    <node name="record_node" pkg="logbandpower" type="record">
+    <node name="record_node" pkg="logbandpower" type="record.py" output="screen">
         <param name="~eeg_filtered"     value="$(arg eeg_filtered)"/>
         <param name="~eeg_bandpower"    value="$(arg eeg_bandpower)"/>
         <param name="~events_bus"       value="$(arg events_bus)"/>
