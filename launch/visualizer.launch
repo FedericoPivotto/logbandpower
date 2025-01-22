@@ -2,7 +2,7 @@
 
 <launch>
     
-    <!-- visualization node -->
+    <!-- Visualization node -->
  	<node name="neuroviz" pkg="rosneuro_visualizer" type="neuroviz" /> 
  	
 </launch>
