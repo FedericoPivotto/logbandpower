@@ -43,21 +43,6 @@ def buffered_bandpower(data: NeuroFrame):
 	return tuple(avgs)
 
 def generate_new_message(data, rate, old_message):
-	"""
-	# Starting from the old message generate the new one
-	new_msg = Float32MultiArray()
-
-	new_msg.layout.dim = [MultiArrayDimension()]
-	
-	new_msg.layout.dim[0].label = "height"
-	new_msg.layout.dim[0].size   = old_message.eeg.info.nchannels
-	new_msg.layout.dim[0].stride = old_message.eeg.info.nchannels
-	new_msg.layout.data_offset = 0
-
-	# Pack the new data
-	new_msg.data = data
-	"""
-
 	# Construct NeuroDataInfo
 	neuro_data_info = NeuroDataInfo()
 	neuro_data_info = old_message.eeg.info
