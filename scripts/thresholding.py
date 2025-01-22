@@ -16,6 +16,7 @@ def callback(data: NeuroFrame):
 	for i in range(channel_data.size):
 		if(channel_data[i] < threshold):
 			description = "Threshold reached on channel {} with value {}".format(channel_n, channel_data[i])
+			# TODO: to remove
 			print(description)
 			neuro_event = generate_new_message(data, description)
 			pub.publish(neuro_event)
@@ -27,9 +28,6 @@ def generate_new_message(data, description):
 	neuro_event.header = data.header
 	neuro_event.neuroheader = data.neuroheader
 	neuro_event.version = "1.0"
-	# neuro_event.event
-	# neuro_event.duration
-	# neuro_event.family
 	neuro_event.description = description
 
 	return neuro_event
