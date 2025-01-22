@@ -9,8 +9,19 @@ project(logbandpower)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
+
   std_msgs
+  pluginlib
+  
+  rosneuro_filters
+  rosneuro_filters_butterworth
+  rosneuro_msgs
 )
+
+find_package(Eigen3 REQUIRED)
+
+find_package(PkgConfig)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -104,7 +115,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES logbandpower
-  CATKIN_DEPENDS roscpp std_msgs
+#  CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
 )
 
@@ -117,16 +128,16 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIRS}
 )
+
+## Add definitions
+add_definitions(${EIGEN3_DEFINITIONS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/logbandpower.cpp
 # )
-add_library(bandpower_lib
-  include/logbandpower/bandpower.h
-  src/logbandpower/bandpower.cpp
-)
 add_library(thresholding_lib
   include/logbandpower/thresholding.h
   src/logbandpower/thresholding.cpp
@@ -141,7 +152,6 @@ add_library(thresholding_lib
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/logbandpower_node.cpp)
-add_executable(bandpower_node src/bandpower_node.cpp)
 add_executable(thresholding_node src/thresholding_node.cpp)
 
 ## Rename C++ executable without prefix
@@ -158,10 +168,6 @@ add_executable(thresholding_node src/thresholding_node.cpp)
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(bandpower_node
-  ${catkin_LIBRARIES}
-  bandpower_lib
-)
 target_link_libraries(thresholding_node
   ${catkin_LIBRARIES}
   thresholding_lib
@@ -176,10 +182,10 @@ target_link_libraries(thresholding_node
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# catkin_install_python(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+catkin_install_python(PROGRAMS
+  scripts/bandpower_node.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
