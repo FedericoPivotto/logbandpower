@@ -11,15 +11,19 @@ def callback(data: NeuroFrame):
 	# Focalize on the specific channel 
 	message_length = int(data.eeg.info.nsamples)
 	channel_data = np.array(data.eeg.data[ (channel_n - 1) * message_length : (channel_n) * message_length ])
-
+	
 	# Compute the mean
 	mean_channel = np.mean(channel_data)
+	
+	# TODO: to remove
+	print("Mean: ", mean_channel)
+	print("Channel data: ", channel_data)
 
 	# Check for the blink
 	for i in range(channel_data.size):
 		if( (channel_data[i] - mean_channel) > threshold):
 			count = count + 1
-			print(count, ": Threshold reached!")
+			print(count, ": Threshold reached!", " [", channel_data[i], "]")
 			break
 
 def main():

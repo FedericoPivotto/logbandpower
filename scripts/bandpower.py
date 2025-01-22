@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 import numpy as np
-from rosneuro_msgs.msg import NeuroFrame, NeuroDataFloat
+from rosneuro_msgs.msg import NeuroFrame, NeuroDataInfo, NeuroDataFloat
 from std_msgs.msg import Float32MultiArray, MultiArrayDimension
 
 def callback(data: NeuroFrame):
@@ -58,10 +58,16 @@ def generate_new_message(data, rate, old_message):
 	new_msg.data = data
 	"""
 
+	# Construct NeuroDataInfo
+	neuro_data_info = NeuroDataInfo()
+	neuro_data_info = old_message.eeg.info
+	neuro_data_info.nsamples = 1
+	neuro_data_info.stride = 0
+
 	# Construct NeuroDataFloat
 	neuro_data = NeuroDataFloat()
-	neuro_data.info = old_message.eeg.info
-	neuro_data.data = data
+	neuro_data.info = neuro_data_info
+	neuro_data.data = data 
 
 	# Construct NeuroFrame
 	neuro_frame = NeuroFrame()
