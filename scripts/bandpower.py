@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 import numpy as np
-from rosneuro_msgs.msg import NeuroFrame
+from rosneuro_msgs.msg import NeuroFrame, NeuroDataFloat
 from std_msgs.msg import Float32MultiArray, MultiArrayDimension
 
 def callback(data: NeuroFrame):
@@ -43,20 +43,34 @@ def buffered_bandpower(data: NeuroFrame):
 	return tuple(avgs)
 
 def generate_new_message(data, rate, old_message):
+	"""
 	# Starting from the old message generate the new one
 	new_msg = Float32MultiArray()
 
 	new_msg.layout.dim = [MultiArrayDimension()]
 	
-	new_msg.layout.dim[0].label = "height";
-	new_msg.layout.dim[0].size   = old_message.eeg.info.nchannels;
-	new_msg.layout.dim[0].stride = old_message.eeg.info.nchannels;
-	new_msg.layout.data_offset = 0;
+	new_msg.layout.dim[0].label = "height"
+	new_msg.layout.dim[0].size   = old_message.eeg.info.nchannels
+	new_msg.layout.dim[0].stride = old_message.eeg.info.nchannels
+	new_msg.layout.data_offset = 0
 
 	# Pack the new data
 	new_msg.data = data
+	"""
 
-	return new_msg
+	# Construct NeuroDataFloat
+	neuro_data = NeuroDataFloat()
+	neuro_data.info = old_message.eeg.info
+	neuro_data.data = data
+
+	# Construct NeuroFrame
+	neuro_frame = NeuroFrame()
+	neuro_frame.header = old_message.header
+	neuro_frame.neuroheader = old_message.neuroheader
+	neuro_frame.sr = old_message.sr
+	neuro_frame.eeg = neuro_data
+
+	return neuro_frame
 
 def main():
 	global new_data, current_frame, seq
@@ -67,7 +81,7 @@ def main():
 	rospy.init_node('bandpower')
 	# Init the Publisher
 	hz = rospy.get_param('rate', 16) # data.sr / nsample
-	pub = rospy.Publisher('eeg/bandpower', Float32MultiArray, queue_size=1)
+	pub = rospy.Publisher('eeg/bandpower', NeuroFrame, queue_size=1)
 	# Setup the Subscriber
 	rospy.Subscriber('eeg/filtered', NeuroFrame, callback)
 	rate = rospy.Rate(hz)
@@ -76,8 +90,8 @@ def main():
 		# Wait until new data arrives
 		if new_data:
 			new_data = buffered_bandpower(current_frame)
-			new_msg = generate_new_message(new_data, hz, current_frame)
-			pub.publish(new_msg)
+			neuro_frame = generate_new_message(new_data, hz, current_frame)
+			pub.publish(neuro_frame)
 			new_data = False
 		rate.sleep()
 		

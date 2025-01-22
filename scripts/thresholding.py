@@ -2,6 +2,7 @@
 import rospy
 import numpy as np
 from rosneuro_msgs.msg import NeuroFrame
+from std_msgs.msg import Float32MultiArray
 
 def callback(data: NeuroFrame):
 	# Load the global variables
@@ -18,21 +19,21 @@ def callback(data: NeuroFrame):
 	for i in range(channel_data.size):
 		if( (channel_data[i] - mean_channel) > threshold):
 			count = count + 1
-			print(count, ": Blink detected!")
+			print(count, ": Threshold reached!")
 			break
 
 def main():
 	# Init the node
-	rospy.init_node('blink_detector', anonymous=True)
+	rospy.init_node('thresholding', anonymous=True)
 	# Setup the parameters
 	global count, threshold, channel_n
 	count  = 0
-	# Here the value 15 is a fallback if the param 'threshold' is not found
-	threshold = rospy.get_param('threshold', 15)
-	channel_n = rospy.get_param('channel', 1)
+	# Here the value 9 is a fallback if the param 'threshold' is not found
+	threshold = rospy.get_param('threshold', -0.3)
+	channel_n = rospy.get_param('channel', 9)
 
 	# Setup the callback
-	rospy.Subscriber('neurodata_filtered', NeuroFrame, callback)
+	rospy.Subscriber('eeg/bandpower', NeuroFrame, callback)
 	# Wait for the data
 	rospy.spin()
 
