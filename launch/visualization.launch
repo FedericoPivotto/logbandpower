@@ -3,6 +3,6 @@
 <launch>
     
     <!-- Visualization node -->
- 	<node name="neuroviz" pkg="rosneuro_visualizer" type="neuroviz" /> 
+ 	<node name="neuroviz" pkg="rosneuro_visualizer" type="neuroviz" required="true" /> 
  	
 </launch>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+	
+	<!-- Remeap topic /neurodata to /eeg/raw -->
+	<remap from="neurodata" to="eeg/raw" />
+	<!-- Remeap topic /neurodata_filtered to /eeg/filtered -->
+	<remap from="neurodata_filtered" to="eeg/filtered" />
+
+	<!-- Load filter chain parameters -->
+	<rosparam command="load" file="$(find logbandpower)/config/ChainCfg.yaml" />
+
+	<!-- Filter chain node -->
+	<node name="filterchain_node" pkg="rosneuro_filters" type="filterchain_node" output="screen" >
+		<param name="configname" value="ChainCfg" />
+	</node>
+
+</launch>
