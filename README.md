@@ -32,11 +32,13 @@ source ./devel/setup.bash
 
 4. Copy `logbandpower` package in directory `catkin_ws/src/`
 
-5. Create directory `dataset` in package directory `catkin_ws/src/logbandpower/`
+5. Create directory `record` in package directory `catkin_ws/src/logbandpower/`
 
-6. Rename the input GDF file as `data.gdf` and copy it in directory `catkin_ws/src/logbandpower/dataset/`
+6. Create directory `dataset` in package directory `catkin_ws/src/logbandpower/`
 
-7. Compile the catkin workspace from directory `catkin_ws/` and source it
+7. Rename the input GDF file as `data.gdf` and copy it in directory `catkin_ws/src/logbandpower/dataset/`
+
+8. Compile the catkin workspace from directory `catkin_ws/` and source it
 ```bash
 catkin build
 # or
@@ -45,10 +47,14 @@ catkin_make
 source ./devel/setup.bash
 ```
 
-8. Run launch file `logbandpower.launch` to start the analysis
+9. Run launch file `logbandpower.launch` to start the analysis
 ```bash
 roslaunch logbandpower logbandpower.launch
 ```
+
+10. Run launch file `visualization.launch` to visualize the signals 
+ 
+11. **TODO**: Once the analysis is completed, the ROS bag is saved in directory `catkin_ws/src/logbandpower/record/` 
 
 ### Tested Environments
 - Local machine, Ubuntu 20.04.6 LTS, ROS Noetic, catkin workspace build with command `catkin build`
