@@ -14,7 +14,7 @@ https://drive.google.com/file/d/1uBr5xO4rIT2c4uyMv3Wp68hWRpg_plb_/view?usp=shari
 source /opt/ros/noetic/setup.bash
 ```
 
-2. Initialize a catkin workspace
+2. Initialize a catkin workspace called `catkin_ws`
 ```bash
 mkdir -p catkin_ws/src
 cd catkin_ws/src/
