@@ -28,14 +28,17 @@ def events_bus_callback(data: NeuroEvent):
 		print('ValueError: argument is invalid')
 
 def main():
-	# Init the node
+	# Initialize the node
 	rospy.init_node('record')
 
 	# Global variables
 	global bag, eeg_filtered, eeg_bandpower, events_bus
+
 	try:
-		# ROS bag
+		# Create bag
 		bag = rosbag.Bag('result.bag', 'w')
+		# TODO: Save in directory logbandpower/record/
+		# bag = rosbag.Bag('../record/result.bag', 'w') 
 	except ValueError:
 		print('ValueError: argument is invalid')
 	except ROSBagException:
@@ -43,12 +46,12 @@ def main():
 	except ROSBagFormatException:
 		print('ROSBagFormatException: bag format is corrupted')
 
-	# Topics to record
+	# Get topics to record
 	eeg_filtered = rospy.get_param('eeg_filtered', 'eeg/filtered')
 	eeg_bandpower = rospy.get_param('eeg_bandpower', 'eeg/bandpower')
 	events_bus = rospy.get_param('events_bus', 'events/bus')
 
-	# Subscribers
+	# Initialize the subscribers
 	rospy.Subscriber(eeg_filtered, NeuroFrame, eeg_filtered_callback)
 	rospy.Subscriber(eeg_bandpower, NeuroFrame, eeg_bandpower_callback)
 	rospy.Subscriber(events_bus, NeuroEvent, events_bus_callback)
