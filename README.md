@@ -34,7 +34,9 @@ source ./devel/setup.bash
 
 5. Create directory `dataset` in package directory `catkin_ws/src/logbandpower/`
 
-6. Compile the catkin workspace from directory `catkin_ws/` and source it
+6. Rename the input GDF file as `data.gdf` and copy it in directory `catkin_ws/src/logbandpower/dataset/`
+
+7. Compile the catkin workspace from directory `catkin_ws/` and source it
 ```bash
 catkin build
 # or
@@ -42,8 +44,6 @@ catkin_make
 
 source ./devel/setup.bash
 ```
-
-7. Rename the input GDF file as `data.gdf` and copy it in directory `catkin_ws/src/logbandpower/dataset/`
 
 8. Run launch file `logbandpower.launch` to start the analysis
 ```bash
