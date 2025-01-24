@@ -8,10 +8,47 @@ The GDF file provided was recorded using a 16-channel EEG amplifier (g.USBamp, g
 https://drive.google.com/file/d/1uBr5xO4rIT2c4uyMv3Wp68hWRpg_plb_/view?usp=sharing
 
 ## Instructions
-1. Create a catkin workspace
+
+1. Source ROS workspace
 ```bash
+source /opt/ros/noetic/setup.bash
 ```
-2. Rename the input GDF file as `data.gdf`
+
+2. Initialize a catkin workspace
+```bash
+mkdir -p catkin_ws/src
+cd catkin_ws/src/
+catkin_init_workspace
+```
+
+3. Compile the catkin workspace from directory `catkin_ws/` and source it
+```bash
+catkin build
+# or
+catkin_make
+
+source ./devel/setup.bash
+```
+
+4. Copy `logbandpower` package in directory `catkin_ws/src/`
+
+5. Compile the catkin workspace from directory `catkin_ws/` and source it
+```bash
+catkin build
+# or
+catkin_make
+
+source ./devel/setup.bash
+```
+
+6. Create directory `dataset/` in package directory `catkin_ws/src/logbandpower/`
+
+7. Rename the input GDF file as `data.gdf` and copy it in directory `catkin_ws/src/logbandpower/dataset/`
+
+8. Run launch file `logbandpower.launch` to start the analysis
+```bash
+roslaunch logbandpower logbandpower.launch
+```
 
 ### Tested Environments
 - Local machine, Ubuntu 20.04.6 LTS, ROS Noetic, catkin workspace build with command `catkin build`
