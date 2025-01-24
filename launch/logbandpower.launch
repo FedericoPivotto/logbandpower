@@ -6,7 +6,7 @@
     <include file="$(find logbandpower)/launch/acquisition.launch"/>
 	
     <!-- Filter chain launch -->
-    <include file="$(find logbandpower)/launch/filter_chain.launch"/>
+    <include file="$(find logbandpower)/launch/filterchain.launch"/>
 
     <!-- Bandpower launch -->
     <include file="$(find logbandpower)/launch/bandpower.launch"/>

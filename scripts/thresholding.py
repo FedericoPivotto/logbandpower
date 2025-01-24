@@ -15,7 +15,7 @@ def callback(data: NeuroFrame):
 	for i in range(channel_data.size):
 		if(channel_data[i] < threshold):
 			description = "Threshold reached on channel {} with value {}".format(channel_n, channel_data[i])
-			# TODO: to remove
+			# TODO: Debug print to remove before delivering
 			print(description)
 			neuro_event = generate_new_message(data, description)
 			pub.publish(neuro_event)
