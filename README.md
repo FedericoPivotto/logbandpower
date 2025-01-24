@@ -7,8 +7,15 @@ The GDF file provided was recorded using a 16-channel EEG amplifier (g.USBamp, g
 ### Resource
 https://drive.google.com/file/d/1uBr5xO4rIT2c4uyMv3Wp68hWRpg_plb_/view?usp=sharing
 
-# Instructions
-1. Rename the input GDF file as `data.gdf`
+## Instructions
+1. Create a catkin workspace
+```bash
+```
+2. Rename the input GDF file as `data.gdf`
+
+### Tested Environments
+- Local machine, Ubuntu 20.04.6 LTS, ROS Noetic, catkin workspace build with command `catkin build`
+- Local machine, Ubuntu 20.04.6 LTS, ROS Noetic, catkin workspace build with command `catkin_make`
 
 ## Authors
 - Federico Pivotto, 2121720, federico.pivotto@studenti.unipd.it
