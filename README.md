@@ -41,7 +41,7 @@ catkin_make
 source ./devel/setup.bash
 ```
 
-6. Create directory `dataset/` in package directory `catkin_ws/src/logbandpower/`
+6. Create directory `dataset` in package directory `catkin_ws/src/logbandpower/`
 
 7. Rename the input GDF file as `data.gdf` and copy it in directory `catkin_ws/src/logbandpower/dataset/`
 
