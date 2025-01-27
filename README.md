@@ -66,7 +66,9 @@ roslaunch logbandpower visualization.launch
 #### VLAB Environment
 Due to an older version of ROS Neuro installed in the VLAB virtual machine, a modification to the launch file `acquisition.launch` is required to make the package running correctly.
 
-It is required to comment `Option 1` (default) and decomment `Option 2`:
+It is required to:
+1. Move the input GDF file `data.gdf` in directory `home/user/`
+2. Comment `Option 1` (default) and decomment `Option 2`
 ```xml
 <!-- Option 2: VLAB virtual machine -->
 <arg name="devarg" default="/home/user/data.gdf"/>
