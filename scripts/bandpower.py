@@ -54,7 +54,6 @@ def generate_new_message(data: tuple, frame: NeuroFrame):
 	# Construct NeuroFrame message
 	neuro_frame = NeuroFrame()
 	neuro_frame.header = frame.header
-	neuro_frame.neuroheader = frame.neuroheader
 	neuro_frame.sr = frame.sr
 	neuro_frame.eeg = neuro_data
 

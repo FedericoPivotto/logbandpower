@@ -25,7 +25,6 @@ def generate_new_message(data: NeuroFrame, description: str):
 	# Construct NeuroEvent
 	neuro_event = NeuroEvent()
 	neuro_event.header = data.header
-	neuro_event.neuroheader = data.neuroheader
 	neuro_event.version = "1.0"
 	neuro_event.description = description
 
