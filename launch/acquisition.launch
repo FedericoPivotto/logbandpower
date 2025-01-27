@@ -7,7 +7,13 @@
 
 	<!-- Acquisition arguments -->
 	<arg name="plugin"      default="rosneuro::EGDDevice"/>
+
+	<!-- Decomment the correct option according to test environment -->
+	<!-- Option 1: Local machine -->
 	<arg name="devarg"      default="$(find logbandpower)/dataset/data.gdf"/>
+	<!-- Option 2: VLAB virtual machine -->
+	<!-- <arg name="devarg"      default="/home/user/data.gdf"/> -->
+	
 	<arg name="samplerate"  default="512"/>
 	<arg name="framerate"   default="16"/>
 
