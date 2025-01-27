@@ -1,31 +1,24 @@
 #!/usr/bin/env python
 import rospy, rosbag, os
-from rosbag import ROSBagException, ROSBagFormatException
 from rosneuro_msgs.msg import NeuroFrame, NeuroEvent
 
 def eeg_filtered_callback(data: NeuroFrame):
-	# Write bag
+	# Global variables
 	global bag, eeg_filtered
-	try:
-		bag.write(eeg_filtered, data)
-	except ValueError:
-		print('ValueError: argument is invalid')
+	# Write bag
+	bag.write(eeg_filtered, data)
 
 def eeg_bandpower_callback(data: NeuroFrame):
-	# Write bag
+	# Global variables
 	global bag, eeg_bandpower
-	try:
-		bag.write(eeg_bandpower, data)
-	except ValueError:
-		print('ValueError: argument is invalid')
+	# Write bag
+	bag.write(eeg_bandpower, data)
 
 def events_bus_callback(data: NeuroEvent):
-	# Write bag
+	# Global variables
 	global bag, events_bus
-	try:
-		bag.write(events_bus, data)
-	except ValueError:
-		print('ValueError: argument is invalid')
+	# Write bag
+	bag.write(events_bus, data)
 
 def main():
 	# Initialize the node
@@ -33,17 +26,10 @@ def main():
 
 	# Global variables
 	global bag, eeg_filtered, eeg_bandpower, events_bus
-
-	try:
-		# Create bag
-		script_dir = os.path.dirname(os.path.realpath(__file__))
-		bag = rosbag.Bag(script_dir +'/../record/result.bag', 'w') 
-	except ValueError:
-		print('ValueError: argument is invalid')
-	except ROSBagException:
-		print('ROSBagException: error occurs opening file')
-	except ROSBagFormatException:
-		print('ROSBagFormatException: bag format is corrupted')
+	
+	# Create bag
+	script_dir = os.path.dirname(os.path.realpath(__file__))
+	bag = rosbag.Bag(script_dir + '/../record/result.bag', 'w')
 
 	# Get topics to record
 	eeg_filtered = rospy.get_param('eeg_filtered', 'eeg/filtered')

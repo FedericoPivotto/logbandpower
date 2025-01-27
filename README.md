@@ -54,7 +54,7 @@ roslaunch logbandpower logbandpower.launch
 
 10. Run launch file `visualization.launch` to visualize the signals 
  
-11. **TODO**: Once the analysis is completed, the ROS bag `result.bag` is saved in directory `catkin_ws/src/logbandpower/record/` 
+11. Once the analysis is completed, the ROS bag `result.bag` is saved in directory `catkin_ws/src/logbandpower/record/` 
 
 ### Tested Environments
 - Local machine, Ubuntu 20.04.6 LTS, ROS Noetic, catkin workspace build with command `catkin build`
