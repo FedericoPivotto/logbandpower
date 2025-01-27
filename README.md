@@ -63,7 +63,7 @@ roslaunch logbandpower visualization.launch
 - Local machine, Ubuntu 20.04.6 LTS, ROS Noetic, catkin workspace build with command `catkin build`
 - Local machine, Ubuntu 20.04.6 LTS, ROS Noetic, catkin workspace build with command `catkin_make`
 
-### VLAB Environment
+#### VLAB Environment
 Due to an older version of ROS Neuro installed in the VLAB virtual machine, a modification to the launch file `acquisition.launch` is required to make the package running correctly.
 
 It is required to comment `Option 1` (default) and decomment `Option 2`:
