@@ -52,7 +52,10 @@ source ./devel/setup.bash
 roslaunch logbandpower logbandpower.launch
 ```
 
-10. Run launch file `visualization.launch` to visualize the signals 
+10. Run launch file `visualization.launch` to visualize the signals
+```bash
+roslaunch logbandpower visualization.launch
+```
  
 11. Once the analysis is completed, the ROS bag `result.bag` is saved in directory `catkin_ws/src/logbandpower/record/` 
 
