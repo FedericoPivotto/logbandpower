@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import rospy, rosbag
+import rospy, rosbag, os
 from rosbag import ROSBagException, ROSBagFormatException
 from rosneuro_msgs.msg import NeuroFrame, NeuroEvent
 
@@ -36,9 +36,8 @@ def main():
 
 	try:
 		# Create bag
-		bag = rosbag.Bag('result.bag', 'w')
-		# TODO: Save in directory logbandpower/record/
-		# bag = rosbag.Bag('../record/result.bag', 'w') 
+		script_dir = os.path.dirname(os.path.realpath(__file__))
+		bag = rosbag.Bag(script_dir +'/../record/result.bag', 'w') 
 	except ValueError:
 		print('ValueError: argument is invalid')
 	except ROSBagException:
