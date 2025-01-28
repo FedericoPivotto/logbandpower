@@ -64,11 +64,11 @@ roslaunch logbandpower visualization.launch
 - Local machine, Ubuntu 20.04.6 LTS, Python 3.8.10, ROS Noetic, catkin workspace build with command `catkin_make`
 
 #### VLAB Environment
-Due to an older version of ROS Neuro installed in the VLAB virtual machine, a modification to the launch file `acquisition.launch` is required to make the package running correctly.
+Due to an older version of ROS Neuro installed in the VLAB virtual machine, a modification is required to make the package running correctly.
 
 It is required to:
 1. Move the input GDF file `data.gdf` in directory `home/user/`
-2. Comment `Option 1` (default) and decomment `Option 2`
+2. Comment `Option 1` (default) and decomment `Option 2` in the launch file `acquisition.launch`
 ```xml
 <!-- Option 2: VLAB virtual machine -->
 <arg name="devarg" default="/home/user/data.gdf"/>
