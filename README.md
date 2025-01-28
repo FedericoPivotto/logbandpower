@@ -47,13 +47,13 @@ catkin_make
 source ./devel/setup.bash
 ```
 
-9. Run launch file `logbandpower.launch` to start the analysis
+9. Run launch file `logbandpower.launch` to start the analysis from directory `catkin_ws/`
 ```bash
 source ./devel/setup.bash
 roslaunch logbandpower logbandpower.launch
 ```
 
-10. Run launch file `visualization.launch` to visualize the signals
+10. Run launch file `visualization.launch` to visualize the signals from directory `catkin_ws/`
 ```bash
 source ./devel/setup.bash
 roslaunch logbandpower visualization.launch
