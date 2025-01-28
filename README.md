@@ -49,11 +49,13 @@ source ./devel/setup.bash
 
 9. Run launch file `logbandpower.launch` to start the analysis
 ```bash
+source ./devel/setup.bash
 roslaunch logbandpower logbandpower.launch
 ```
 
 10. Run launch file `visualization.launch` to visualize the signals
 ```bash
+source ./devel/setup.bash
 roslaunch logbandpower visualization.launch
 ```
  
