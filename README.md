@@ -52,14 +52,10 @@ source ./devel/setup.bash
 source ./devel/setup.bash
 roslaunch logbandpower logbandpower.launch
 ```
-
-10. Run launch file `visualization.launch` to visualize the signals from directory `catkin_ws/`
-```bash
-source ./devel/setup.bash
-roslaunch logbandpower visualization.launch
-```
  
 11. Once the analysis is completed, the ROS bag `result.bag` is saved in directory `catkin_ws/src/logbandpower/record/` 
+
+**Note**: the provided ROS bag `result.bag` was recorded in a local machine using the latest version of ROS Neuro.
 
 ### Tested Environments
 - Local machine, Ubuntu 20.04.6 LTS, Python 3.8.10, ROS Noetic, catkin workspace build with command `catkin build`
