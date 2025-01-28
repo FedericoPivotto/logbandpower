@@ -32,7 +32,7 @@ source ./devel/setup.bash
 
 4. Copy `logbandpower` package in directory `catkin_ws/src/`
 
-5. Create directory `record` in package directory `catkin_ws/src/logbandpower/`
+5. If it does not exist, create directory `record` in package directory `catkin_ws/src/logbandpower/`
 
 6. Create directory `dataset` in package directory `catkin_ws/src/logbandpower/`
 
